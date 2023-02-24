@@ -4,8 +4,10 @@ import { router } from "./routes/routes";
 
 import cors from "cors";
 
+const allowedOrigins = ["http://127.0.0.1:5173","http://localhost:5173"];
+
 const corsOptions = {
-  origin: "http://127.0.0.1:5173",
+  origin: allowedOrigins
 };
 
 const app = express();
