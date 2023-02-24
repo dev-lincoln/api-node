@@ -2,11 +2,19 @@ import express from "express";
 
 import { router } from "./routes/routes";
 
+import cors from "cors";
+
+const corsOptions = {
+  origin: "http://127.0.0.1:5173",
+};
+
 const app = express();
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
-app.use(router)
+app.use(router);
 
 const port = process.env.PORT || 3000;
 
