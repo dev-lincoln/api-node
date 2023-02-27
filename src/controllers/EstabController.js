@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 export default {
   async criarEstab(req, res) {
     try {
-      const { nome, endereco, segmento, telefone, whatsapp, imagem } = req.body;
+      const { nome, endereco, bairro, segmento, telefone, whatsapp, imagem } = req.body;
 
       const estab = await prisma.estabelecimento.create({
-        data: { nome, endereco, segmento, telefone, whatsapp, imagem },
+        data: { nome, endereco, bairro, segmento, telefone, whatsapp, imagem },
       });
 
       return res.json(estab);
@@ -47,7 +47,7 @@ export default {
     try {
       const { id } = req.params;
 
-      const { nome, endereco, segmento, telefone, whatsapp, imagem } = req.body;
+      const { nome, endereco, bairro, segmento, telefone, whatsapp, imagem } = req.body;
 
       const estab = await prisma.estabelecimento.findUnique({
         where: { id: Number(id) },
@@ -58,7 +58,7 @@ export default {
       } else {
         await prisma.estabelecimento.update({
           where: { id: Number(id) },
-          data: { nome, endereco, segmento, telefone, whatsapp, imagem },
+          data: { nome, endereco, bairro, segmento, telefone, whatsapp, imagem },
         });
         return res.json({ message: "Usuário atualizado" });
       }
